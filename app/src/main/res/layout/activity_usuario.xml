@@ -28,23 +28,24 @@
                 android:backgroundTint="#1196FF"
                 app:srcCompat="@drawable/usu" />
 
-            <TextView
-                android:id="@+id/etusu"
+            <EditText
+                android:id="@+id/edusuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ems="10"
                 android:hint="Usuario"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/etnombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="Nombre"
-                android:textSize="18sp" />
+                android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/etcorreousu"
+                android:id="@+id/ednombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etcorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -53,7 +54,7 @@
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/etclaveusu"
+                android:id="@+id/etclave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -62,7 +63,7 @@
                 android:inputType="textPassword" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/cbactivo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -75,23 +76,24 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnadicionar"
+                    android:id="@+id/btnguardar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
-                    android:text="Adcionar"
+                    android:onClick="Guardar"
+                    android:text="Guardar"
                     app:cornerRadius="10dp" />
 
                 <Button
-                    android:id="@+id/btnmodificar"
+                    android:id="@+id/btneliminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
-                    android:text="Modificar"
+                    android:text="Eliminar"
                     app:cornerRadius="10dp" />
 
             </LinearLayout>
@@ -110,6 +112,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
                     android:gravity="center|center_vertical"
+                    android:onClick="Consultar"
                     android:text="Consultar"
                     app:cornerRadius="10dp" />
 
@@ -137,6 +140,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
+                    android:onClick="Limpiar"
                     android:text="Cancelar"
                     app:cornerRadius="10dp" />
 
@@ -147,6 +151,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
+                    android:onClick="Regresar"
                     android:text="Regresar"
                     app:cornerRadius="10dp" />
             </LinearLayout>

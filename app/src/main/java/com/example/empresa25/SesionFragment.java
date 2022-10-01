@@ -1,5 +1,6 @@
 package com.example.empresa25;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -51,6 +52,12 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
                 Iniciar_sesion();
             }
         });
+        jtvregistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Registrarse();
+            }
+        });
         rq = Volley.newRequestQueue(getContext());//requerimiento Volley
         return  vista;
 
@@ -80,5 +87,9 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
     public void onResponse(JSONObject response) {
         Toast.makeText(getContext(), "Sesion iniciada", Toast.LENGTH_SHORT).show();
 
+    }
+    private void Registrarse(){
+        Intent intuusuarios=new Intent(getContext(),UsuarioActivity.class);
+        startActivity(intuusuarios);
     }
 }
