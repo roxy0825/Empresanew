@@ -13,52 +13,61 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="0dp"
             android:layout_marginRight="10dp"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageView3"
                 android:layout_width="match_parent"
-                android:layout_height="195dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#1196FF"
-                app:srcCompat="@drawable/usu" />
+                android:layout_height="176dp"
+                android:layout_marginTop="0dp"
+                app:srcCompat="@drawable/login" />
 
             <EditText
                 android:id="@+id/edusuario"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:ems="10"
+                android:gravity="center"
                 android:hint="Usuario"
                 android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/ednombre"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:ems="10"
+                android:gravity="center"
                 android:hint="Nombre"
                 android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/etcorreo"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:ems="10"
+                android:gravity="center"
                 android:hint="Correo"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="#0C0C0C" />
 
             <EditText
                 android:id="@+id/etclave"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:ems="10"
+                android:gravity="center"
                 android:hint="Clave"
                 android:inputType="textPassword" />
 
@@ -66,7 +75,7 @@
                 android:id="@+id/cbactivo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="0dp"
                 android:text="CheckBox" />
 
             <LinearLayout
@@ -79,22 +88,24 @@
                     android:id="@+id/btnguardar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#1196ff"
+                    android:backgroundTint="#F8236B"
                     android:onClick="Guardar"
                     android:text="Guardar"
-                    app:cornerRadius="10dp" />
+                    app:cornerRadius="15dp" />
 
                 <Button
                     android:id="@+id/btneliminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#1196ff"
+                    android:backgroundTint="#F8236B"
+                    android:onClick="Eliminar"
                     android:text="Eliminar"
-                    app:cornerRadius="10dp" />
+                    app:cornerRadius="15dp" />
 
             </LinearLayout>
 
@@ -106,25 +117,26 @@
 
                 <Button
                     android:id="@+id/btnconsultar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
+                    android:layout_width="98dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#1196ff"
+                    android:backgroundTint="#F8236B"
                     android:gravity="center|center_vertical"
                     android:onClick="Consultar"
                     android:text="Consultar"
-                    app:cornerRadius="10dp" />
+                    app:cornerRadius="15dp" />
 
                 <Button
                     android:id="@+id/btnanular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#1196ff"
+                    android:backgroundTint="#F8236B"
                     android:text="Anular"
-                    app:cornerRadius="10dp" />
+                    app:cornerRadius="15dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -137,23 +149,24 @@
                     android:id="@+id/button6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#1196ff"
+                    android:backgroundTint="#F8236B"
                     android:onClick="Limpiar"
                     android:text="Cancelar"
-                    app:cornerRadius="10dp" />
+                    app:cornerRadius="15dp" />
 
                 <Button
                     android:id="@+id/button8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#1196ff"
+                    android:backgroundTint="#F8236B"
                     android:onClick="Regresar"
                     android:text="Regresar"
-                    app:cornerRadius="10dp" />
+                    app:cornerRadius="15dp" />
             </LinearLayout>
 
         </LinearLayout>

@@ -15,11 +15,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class UsuarioActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener{
 
@@ -29,6 +33,7 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
     JsonRequest jrq;
     String usr,nombre,correo,clave;
     byte sw;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +63,48 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
             Toast.makeText(this, "Todos los datos son regueridos", Toast.LENGTH_SHORT).show();
             jetusuario.requestFocus();
         }else {
+            if (sw == 0)
+             url = "http://172.16.60.24:8080/WebServesRoxy/registrocorreo.php";
+            else {
+                url = "http://172.16.60.24:8080/WebServesRoxy/actualiza.php";
+                sw=0;
+            }
+            StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>()
+                    {
+                        @Override
+                        public void onResponse(String response) {
+                            Limpiar_campos();
+                            Toast.makeText(getApplicationContext(), "Registro de usuario realizado!", Toast.LENGTH_LONG).show();
+                        }
+                    },
+                    new Response.ErrorListener()
+                    {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), "Registro de usuario incorrecto!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("usr",jetusuario.getText().toString().trim());
+                    params.put("nombre", jetnombre.getText().toString().trim());
+                    params.put("correo",jetcorreo.getText().toString().trim());
+                    params.put("clave",jetclave.getText().toString().trim());
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(postRequest);
 
         }
     }
+
+
+
 
     public void Consultar (View view){
         usr=jetusuario.getText().toString();
@@ -68,7 +112,7 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
             Toast.makeText(this, "Usuario es requerido para la busqueda", Toast.LENGTH_SHORT).show();
             jetusuario.requestFocus();
         }else {
-            String url = "http://172.16.60.24:8080/WebServesRoxy/consulta.php?usr="+usr;
+             url = "http://172.16.60.24:8080/WebServesRoxy/consulta.php?usr="+usr;
             jrq = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
             rq.add(jrq);
         }
@@ -120,5 +164,43 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
             e.printStackTrace();
         }
 
+    }
+    public void Eliminar(View view){
+        usr=jetusuario.getText().toString();
+        if (usr.isEmpty() || nombre.isEmpty() || correo.isEmpty() || clave.isEmpty()){
+            Toast.makeText(this, "El usuario es reguerido", Toast.LENGTH_SHORT).show();
+            jetusuario.requestFocus();
+        }else {
+
+                url = "http://172.16.60.24:8080/WebServesRoxy/elimina.php";
+            StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>()
+                    {
+                        @Override
+                        public void onResponse(String response) {
+                            Limpiar_campos();
+                            Toast.makeText(getApplicationContext(), "Registro de usuario realizado!", Toast.LENGTH_LONG).show();
+                        }
+                    },
+                    new Response.ErrorListener()
+                    {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), "Registro de usuario incorrecto!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("usr",jetusuario.getText().toString().trim());
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(postRequest);
+
+        }
     }
 }
