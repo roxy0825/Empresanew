@@ -64,9 +64,9 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
             jetusuario.requestFocus();
         }else {
             if (sw == 0)
-             url = "http://172.16.60.24:8080/WebServesRoxy/registrocorreo.php";
+             url = "http://192.168.1.58:80/webserver12/registrocorreo.php";
             else {
-                url = "http://172.16.60.24:8080/WebServesRoxy/actualiza.php";
+                url = "http://192.168.1.58:80/webserver12/actualiza.php";
                 sw=0;
             }
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -112,7 +112,7 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
             Toast.makeText(this, "Usuario es requerido para la busqueda", Toast.LENGTH_SHORT).show();
             jetusuario.requestFocus();
         }else {
-             url = "http://172.16.60.24:8080/WebServesRoxy/consulta.php?usr="+usr;
+             url = "http://192.168.1.58:80/webserver12/consulta.php?usr="+usr;
             jrq = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
             rq.add(jrq);
         }
@@ -172,7 +172,7 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
             jetusuario.requestFocus();
         }else {
 
-                url = "http://172.16.60.24:8080/WebServesRoxy/elimina.php";
+                url = "http://192.168.1.58:80/webserver12/elimina.php";
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                     new Response.Listener<String>()
                     {
@@ -203,25 +203,23 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
 
         }
     }
-    public void Anular(View view){
-        usr=jetusuario.getText().toString();
-        if (usr.isEmpty() || nombre.isEmpty() || correo.isEmpty() || clave.isEmpty()){
+    public void Anular(View view) {
+        usr = jetusuario.getText().toString();
+        if (usr.isEmpty() || nombre.isEmpty() || correo.isEmpty() || clave.isEmpty()) {
             Toast.makeText(this, "El usuario es reguerido", Toast.LENGTH_SHORT).show();
             jetusuario.requestFocus();
-        }else {
+        } else {
 
-            url = "http://172.16.60.24:8080/WebServesRoxy/anula.php";
+            url = "http://192.168.1.58:80/webserver12/anula.php";
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>()
-                    {
+                    new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             Limpiar_campos();
                             Toast.makeText(getApplicationContext(), "Registro de usuario anulado!", Toast.LENGTH_LONG).show();
                         }
                     },
-                    new Response.ErrorListener()
-                    {
+                    new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getApplicationContext(), "Registro de usuario no anulado!", Toast.LENGTH_LONG).show();
@@ -229,10 +227,9 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
                     }
             ) {
                 @Override
-                protected Map<String, String> getParams()
-                {
+                protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("usr",jetusuario.getText().toString().trim());
+                    params.put("usr", jetusuario.getText().toString().trim());
                     return params;
                 }
             };
@@ -240,4 +237,5 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
             requestQueue.add(postRequest);
 
         }
+    }
 }

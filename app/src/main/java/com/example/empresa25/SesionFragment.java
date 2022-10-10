@@ -71,7 +71,7 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
             jetcorreo.requestFocus();
         }
         else{
-            String url = "http://172.16.60.31:8080/WebServices/Sesion.php?correo="+correo+"&clave="+clave+"";
+            String url = "http://192.168.1.58:80/webserver12/Sesion.php?correo="+correo+"&clave="+clave+"";
             jrq = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
             rq.add(jrq);
         }
@@ -86,10 +86,14 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
     @Override
     public void onResponse(JSONObject response) {
         Toast.makeText(getContext(), "Sesion iniciada", Toast.LENGTH_SHORT).show();
-
+        Agenda();
     }
     private void Registrarse(){
         Intent intuusuarios=new Intent(getContext(),UsuarioActivity.class);
+        startActivity(intuusuarios);
+    }
+    private void Agenda(){
+        Intent intuusuarios=new Intent(getContext(),AgendaActivity.class);
         startActivity(intuusuarios);
     }
 }
