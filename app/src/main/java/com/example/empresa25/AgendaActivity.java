@@ -59,9 +59,9 @@ public class AgendaActivity extends AppCompatActivity implements Response.Listen
             jetid.requestFocus();
         }else {
             if (sw == 0)
-                    url = "http://192.168.1.58:80/webserver12/agenda/registrocorreo.php";
+                    url = "http://172.16.60.24:8080/webserver12/agenda/registrocorreo.php";
             else {
-                url = "http://192.168.1.58:80/webserver12/agenda/actualizar.php";
+                url = "http://172.16.60.24:8080/webserver12/agenda/actualizar.php";
                 sw=0;
             }
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -103,7 +103,7 @@ public class AgendaActivity extends AppCompatActivity implements Response.Listen
             Toast.makeText(this, "Usuario es requerido para la busqueda", Toast.LENGTH_SHORT).show();
             jetid.requestFocus();
         }else {
-            url = "http://192.168.1.58:80/webserver12/agenda/consultar.php?id="+id;
+            url = "http://172.16.60.24:8080/webserver12/agenda/consultar.php?id="+id;
             jrq = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
             rq.add(jrq);
         }
@@ -165,7 +165,7 @@ public class AgendaActivity extends AppCompatActivity implements Response.Listen
             jetid.requestFocus();
         } else {
 
-            url = "http://192.168.1.58:80/webserver12/agenda/anular.php";
+            url = "http://172.16.60.24:8080/webserver12/agenda/anular.php";
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                     new Response.Listener<String>() {
                         @Override

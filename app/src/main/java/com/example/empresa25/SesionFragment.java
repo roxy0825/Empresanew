@@ -71,7 +71,7 @@ public class SesionFragment extends Fragment implements Response.Listener<JSONOb
             jetcorreo.requestFocus();
         }
         else{
-            String url = "http://192.168.1.58:80/webserver12/Sesion.php?correo="+correo+"&clave="+clave+"";
+            String url = "http://172.16.60.24:8080/webserver12/Sesion.php?correo="+correo+"&clave="+clave+"";
             jrq = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
             rq.add(jrq);
         }
